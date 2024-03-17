@@ -21,6 +21,7 @@ food.spawn_food(FOOD_INITIAL_COUNT)
 # Microbe
 microbes = [Microbes(random.randint(0, X_GRID - 1), random.randint(0, Y_GRID - 1)) for _ in range(MICROBE_COUNT)]
 
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -38,10 +39,19 @@ while True:
         food.draw_single_food()
 
     # Microbe
+    new_microbes = []
     for microbe in microbes:
-        microbe.draw_microbes(screen)
         microbe.move()
         microbe.evolve()
+        if (microbe.x, microbe.y) in food.food_positions:
+            if microbe.eat_food(food):
+                new_microbes.append(microbe.reproduce())
+        microbe.draw_microbes(screen)
+
+        if microbe.energy <= 0:
+            microbes.remove(microbe)
+
+    microbes.extend(new_microbes)
 
     pygame.display.flip()
 
