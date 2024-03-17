@@ -4,6 +4,7 @@ import sys
 from Settings import *
 from Grid import *
 from Food import *
+from Microbes import *
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -18,7 +19,7 @@ food = Food(X_GRID, Y_GRID, TILESIZE, FOOD_COLOR)
 food.spawn_food(FOOD_INITIAL_COUNT)
 
 # Microbe
-
+microbes = [Microbes(random.randint(0, X_GRID - 1), random.randint(0, Y_GRID - 1)) for _ in range(MICROBE_COUNT)]
 
 while True:
     for event in pygame.event.get():
@@ -37,7 +38,9 @@ while True:
         food.draw_single_food()
 
     # Microbe
-
+    for microbe in microbes:
+        microbe.draw_microbes(screen)
+        
     pygame.display.flip()
 
 pygame.quit()
