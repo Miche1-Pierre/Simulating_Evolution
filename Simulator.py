@@ -40,7 +40,9 @@ while True:
     # Microbe
     for microbe in microbes:
         microbe.draw_microbes(screen)
-        
+        microbe.move()
+        microbe.evolve()
+
     pygame.display.flip()
 
 pygame.quit()
