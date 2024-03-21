@@ -12,7 +12,7 @@ class Microbes:
         self.energy = MICROBE_START_ENERGY
 
     def draw_microbes(self, screen):
-         pygame.draw.circle(screen, self.color, (int(self.x * TILESIZE + TILESIZE / 2), int(self.y * TILESIZE + TILESIZE / 2)), int(TILESIZE / 2))
+         pygame.draw.circle(screen, self.color, (int(self.x * TILESIZE + TILESIZE), int(self.y * TILESIZE + TILESIZE)), int(TILESIZE))
 
     def move(self):
        direction_table = [(-1, 1), (0, 1), (1, 1), (-1, 0), (1, 0), (-1, -1), (0, -1), (1, -1)]
