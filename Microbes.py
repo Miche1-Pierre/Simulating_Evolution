@@ -16,8 +16,8 @@ class Microbes:
 
 
     def move(self):
-       motion_table = [(-1, 1), (0, 1), (1, 1), (-1, 0), (1, 0), (-1, -1), (0, -1), (1, -1)]
-       dx, dy = motion_table[self.direction]
+       direction_table = [(-1, 1), (0, 1), (1, 1), (-1, 0), (1, 0), (-1, -1), (0, -1), (1, -1)]
+       dx, dy = direction_table[self.direction]
        self.x += dx
        self.y += dy
        self.energy -= MICROBE_ENERGY_LOSS_PER_TICK
